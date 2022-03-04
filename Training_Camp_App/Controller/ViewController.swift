@@ -7,32 +7,14 @@
 
 import UIKit
 
+var currentController = 0
+
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        print("Start that shit")
-        super.viewDidLoad()
-        self.setupFrontOnView()
-
-    }
-}
-
-extension UIViewController {
-    func setupFrontOnView() {
-        label.setupLabel(on: view)
-        label.doFrontOnLabel()
+    override func viewWillAppear(_ animated: Bool) {
         
-        button.setupButton(on: view)
-        button.doFrontOnButton()
+        super.viewWillAppear(true)
+        self.setupFrontOnView()
     }
 }
 
-
-
-//        self.topAnchor.constraint(equalTo: on.topAnchor).isActive = true
-//        self.leadingAnchor.constraint(equalTo: on.leadingAnchor).isActive = true
-//        self.bottomAnchor.constraint(equalTo: on.topAnchor, constant: 50).isActive = true
-//        self.trailingAnchor.constraint(equalTo: on.trailingAnchor).isActive = true
-//        self.topAnchor.constraint(equalTo: centerYAnchor)
-
-//        self.centerYAnchor.constraint(equalTo: on.centerXAnchor).isActive = true

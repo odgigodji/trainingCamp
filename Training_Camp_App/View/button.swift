@@ -12,32 +12,43 @@ var button = UIButton()
 
 extension UIButton {
     
-    func setConstrains(on view: UIView) {
+    func setConstrains(on view: UIView, constantOnXcenter: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
-        self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constantOnXcenter).isActive = true
     }
     
-    func setupButton(on view: UIView) {
+    func setupButton(on view: UIView, constantOnXcenter: CGFloat) {
         view.addSubview(self)
-        setConstrains(on: view)
-        addActionOnButton()
+        self.setConstrains(on: view, constantOnXcenter: constantOnXcenter)
+        self.addActionOnButton()
     }
+    
+    func doFrontOnButton() {
+        self.backgroundColor = .orange
+    }
+}
+
+
+extension UIButton {
     
     func addActionOnButton() {
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         print("addACtionOnButton")
     }
     
-    func doFrontOnButton() {
-        self.backgroundColor = .orange
-        
+    @objc private func buttonAction(_ sender:UIButton!) {
+        colorAnimation()
+        resultOfCalculations.plusOne()
+        label.text = "result is \(resultOfCalculations)"
     }
     
-    @objc private func buttonAction(_ sender:UIButton!) {
-        label.text = "result is \(resultOfCalculations)"
-        resultOfCalculations += 1
+    
+    func colorAnimation() {
+        UIView.animate(withDuration: 0.05) {
+            button.backgroundColor = .systemGray
+            button.backgroundColor = .orange
+        }
     }
 }
-
 

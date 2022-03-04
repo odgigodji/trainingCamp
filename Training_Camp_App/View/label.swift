@@ -10,12 +10,13 @@ import UIKit
 
 var label = UILabel()
 
-
 extension UILabel {
     
     func setupLabel(on view: UIView) {
         view.addSubview(self)
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        //MARK: - Label
         self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
         self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
@@ -25,8 +26,5 @@ extension UILabel {
         self.backgroundColor = .systemGray4
         self.textColor = .black
         self.font = UIFont(name: "Avenir Medium", size: 30.0)
-        
-//        self.layer.borderWidth = 100
-        
     }
 }

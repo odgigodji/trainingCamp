@@ -6,7 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 var resultOfCalculations = 0
 
+extension Int {
+    func plusOne() {
+        resultOfCalculations += 1
+    }
+}
 
